@@ -283,9 +283,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             applicationContext, notificationChannelId
         )
 
-        notificationCompatBuilder // BIG_PICTURE_STYLE sets title and content for API 16 (4.1 and after).
-            .setStyle(bigPictureStyle) // Title for API <16 (4.0 and below) devices.
-            .setContentTitle(ContentBigImage.mContentTitle) // Content for API <24 (7.0 and below) devices.
+        notificationCompatBuilder
+
+            // BIG_PICTURE_STYLE sets title and content for API 16 (4.1 and after).
+            .setStyle(bigPictureStyle)
+
+            // Title for API <16 (4.0 and below) devices.
+            .setContentTitle(ContentBigImage.mContentTitle)
+
+            // Content for API <24 (7.0 and below) devices.
             .setContentText(ContentBigImage.mContentText)
             .setSmallIcon(R.drawable.ic_stat_notification)
             .setLargeIcon(
@@ -295,7 +301,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 )
             )
             .setContentIntent(mainPendingIntent)
-            .setDefaults(NotificationCompat.DEFAULT_ALL) // Set primary color (important for Wear 2.0 Notifications).
+            .setDefaults(NotificationCompat.DEFAULT_ALL)
+
+            // Set primary color (important for Wear 2.0 Notifications).
             .setColor(
                 ContextCompat.getColor(
                     applicationContext,
@@ -310,10 +318,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // .setGroupSummary(true)
             // .setGroup(GROUP_KEY_YOUR_NAME_HERE)
             .setSubText(1.toString())
-            .setCategory(Notification.CATEGORY_SOCIAL) // Sets priority for 25 and below. For 26 and above, 'priority' is deprecated for
+            .setCategory(Notification.CATEGORY_SOCIAL)
+
+            // Sets priority for 25 and below. For 26 and above, 'priority' is deprecated for
             // 'importance' which is set in the NotificationChannel. The integers representing
             // 'priority' are different from 'importance', so make sure you don't mix them.
-            .setPriority(ContentBigImage.mPriority) // Sets lock-screen visibility for 25 and below. For 26 and above, lock screen
+            .setPriority(ContentBigImage.mPriority)
+
+            // Sets lock-screen visibility for 25 and below. For 26 and above, lock screen
             // visibility is set in the NotificationChannel.
             .setVisibility(ContentBigImage.mChannelLockscreenVisibility)
 
