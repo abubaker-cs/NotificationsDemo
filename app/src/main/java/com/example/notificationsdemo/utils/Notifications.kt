@@ -7,11 +7,12 @@ import android.os.Build
 import com.example.notificationsdemo.data.Content
 
 // Create a class as Notification Util also create a function to create notification channel.
-class Notification {
+class Notifications {
 
     fun createInboxStyleNotificationChannel(context: Context): String {
 
-        // NotificationChannels are required for Notifications on O (API 26) and above.
+        // Note: NotificationChannels are required for Notifications on O (API 26) and above.
+
         // 0 (API 26) - Released publicly as Android 8.0 in August 2017.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -67,7 +68,7 @@ class Notification {
 
         } else {
 
-            // Returns null for pre-O (26) devices.
+            // Since "Inbox Style" is not available on the devices less then API Level 26, thus return NULL
             return ""
 
         }

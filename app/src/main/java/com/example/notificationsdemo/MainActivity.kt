@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.example.notificationsdemo.data.Content
 import com.example.notificationsdemo.databinding.ActivityMainBinding
+import com.example.notificationsdemo.utils.Notifications
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -68,8 +69,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // 1. Create/Retrieve Notification Channel for O and beyond devices (26+).
         val notificationChannelId: String =
-            com.example.notificationsdemo.utils.Notification()
-                .createInboxStyleNotificationChannel(this)
+            Notifications().createInboxStyleNotificationChannel(this)
 
         // 2. Build the INBOX_STYLE.
         val inboxStyle =
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // 3. Set up main Intent for notification that is the Activity that you want to launch when user tap on notification.
         val mainIntent = Intent(this, MainActivity::class.java)
-        
+
         // Gets a PendingIntent containing the intent.
         val mainPendingIntent = PendingIntent.getActivity(
             this,
