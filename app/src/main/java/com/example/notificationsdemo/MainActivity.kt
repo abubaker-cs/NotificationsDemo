@@ -37,14 +37,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    // Assign a click event to button
     override fun onClick(v: View) {
-        // Assign a click event to button and call the generateInboxStyleNotification function.
+
         when (v.id) {
 
+            // Call the generateInboxStyleNotification function.
             R.id.btn_inbox_style -> {
                 generateInboxStyleNotification()
                 return
             }
+
         }
 
     }
@@ -163,23 +166,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 )
             )
 
-            // SIDE NOTE: Auto-bundling is enabled for 4 or more notifications on API 24+ (N+)
-            // devices and all Wear devices. If you have more than one notification and
-            // you prefer a different summary notification, set a group key and create a
-            // summary notification via
-            // .setGroupSummary(true)
-            // .setGroup(GROUP_KEY_YOUR_NAME_HERE)
+            /**
+             * Side Note:
+             * Auto-bundling is enabled for 4 or more notifications on API 24+ (N+)
+             * devices and all Wear devices. If you have more than one notification and
+             * you prefer a different summary notification, set a group key and create a
+             * summary notification via
+             *      .setGroupSummary(true)
+             *      .setGroup(GROUP_KEY_YOUR_NAME_HERE)
+             */
 
-            // Sets large number at the right-hand side of the notification for API <24 devices.
+
             // mNumberOfNewEmails = 5
+            // Sets large number at the right-hand side of the notification for API <24 devices.
             .setSubText(Content.mNumberOfNewEmails.toString())
 
             // CATEGORY_EMAIL = "email" (Notification will be like an email)
             .setCategory(Notification.CATEGORY_EMAIL)
 
-            // Sets priority for 25 and below. For 26 and above, 'priority' is deprecated for
-            // 'importance' which is set in the NotificationChannel. The integers representing
-            // 'priority' are different from 'importance', so make sure you don't mix them.
+            // Sets priority for 25 and below: mPriority = NotificationCompat.PRIORITY_DEFAULT
+            // For 26 and above, 'priority' is deprecated for 'importance' which is set in the NotificationChannel.
+            // Caution:  The integers representing 'priority' are different from 'importance', so make sure you don't mix them.
             .setPriority(Content.mPriority)
 
             // Sets lock-screen visibility for 25 and below. For 26 and above, lock screen
@@ -192,10 +199,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // If the phone is in "Do not disturb mode, the user will still be notified if the sender(s) is starred as a favorite.
         for (name in Content.mEmailSenders()) {
+
+            // TODO: Replace deprecated addPerson() method.
             notificationCompatBuilder.addPerson(name)
+
         }
 
-        // We will use it in the next step:
+        // Prepare (build) the recently defined notification
         val notification = notificationCompatBuilder.build()
 
         // Using the Notification Builder notify the user with:
