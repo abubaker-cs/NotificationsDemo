@@ -72,15 +72,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Notifications().createInboxStyleNotificationChannel(this)
 
         // 2. Build the INBOX_STYLE.
-        val inboxStyle =
-            NotificationCompat.InboxStyle() // This title is slightly different than regular title, since I know INBOX_STYLE is
-                // available.
-                .setBigContentTitle(Content.mBigContentTitle)
-                .setSummaryText(Content.mSummaryText)
+        val inboxStyle = NotificationCompat.InboxStyle()
+
+            // Title = "5 new emails from BlenderBros, Wingfox, DesignCourse +2"
+            .setBigContentTitle(Content.mBigContentTitle)
+
+            // Summary = New email messages
+            .setSummaryText(Content.mSummaryText)
 
         // Add each summary line of the new emails, you can add up to 5.
         for (summary in Content.mIndividualEmailSummary()) {
+
+            // Separate individual lines from the ArrayList defined in the Content.kt
             inboxStyle.addLine(summary)
+
         }
 
         // 3. Set up main Intent for notification that is the Activity that you want to launch when user tap on notification.
