@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import com.example.notificationsdemo.data.Content
 
 // Create a class as Notification Util also create a function to create notification channel.
 class NotificationUtil {
@@ -14,17 +15,17 @@ class NotificationUtil {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             // The id of the channel.
-            val channelId: String = InboxStyleMockData.mChannelId
+            val channelId: String = Content.mChannelId
 
             // The user-visible name of the channel.
-            val channelName: CharSequence = InboxStyleMockData.mChannelName
+            val channelName: CharSequence = Content.mChannelName
 
             // The user-visible description of the channel.
-            val channelDescription: String = InboxStyleMockData.mChannelDescription
-            val channelImportance: Int = InboxStyleMockData.mChannelImportance
-            val channelEnableVibrate: Boolean = InboxStyleMockData.mChannelEnableVibrate
+            val channelDescription: String = Content.mChannelDescription
+            val channelImportance: Int = Content.mChannelImportance
+            val channelEnableVibrate: Boolean = Content.mChannelEnableVibrate
             val channelLockscreenVisibility: Int =
-                InboxStyleMockData.mChannelLockscreenVisibility
+                Content.mChannelLockscreenVisibility
 
             // Initializes NotificationChannel.
             val notificationChannel = NotificationChannel(channelId, channelName, channelImportance)

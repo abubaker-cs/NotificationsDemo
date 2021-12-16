@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import com.example.notificationsdemo.data.Content
 import com.example.notificationsdemo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -71,11 +72,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val inboxStyle =
             NotificationCompat.InboxStyle() // This title is slightly different than regular title, since I know INBOX_STYLE is
                 // available.
-                .setBigContentTitle(InboxStyleMockData.mBigContentTitle)
-                .setSummaryText(InboxStyleMockData.mSummaryText)
+                .setBigContentTitle(Content.mBigContentTitle)
+                .setSummaryText(Content.mSummaryText)
 
         // Add each summary line of the new emails, you can add up to 5.
-        for (summary in InboxStyleMockData.mIndividualEmailSummary()) {
+        for (summary in Content.mIndividualEmailSummary()) {
             inboxStyle.addLine(summary)
         }
 
@@ -102,9 +103,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // notification is expanded.
             .setStyle(inboxStyle) // Title for API <16 (4.0 and below) devices and API 16+ (4.1 and after) when the
             // notification is collapsed.
-            .setContentTitle(InboxStyleMockData.mContentTitle) // Content for API <24 (7.0 and below) devices and API 16+ (4.1 and after) when the
+            .setContentTitle(Content.mContentTitle) // Content for API <24 (7.0 and below) devices and API 16+ (4.1 and after) when the
             // notification is collapsed.
-            .setContentText(InboxStyleMockData.mContentText)
+            .setContentText(Content.mContentText)
             .setSmallIcon(R.drawable.ic_stat_notification)
             .setLargeIcon(
                 BitmapFactory.decodeResource(
@@ -126,17 +127,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // .setGroupSummary(true)
             // .setGroup(GROUP_KEY_YOUR_NAME_HERE)
             // Sets large number at the right-hand side of the notification for API <24 devices.
-            .setSubText(InboxStyleMockData.mNumberOfNewEmails.toString())
+            .setSubText(Content.mNumberOfNewEmails.toString())
             .setCategory(Notification.CATEGORY_EMAIL) // Sets priority for 25 and below. For 26 and above, 'priority' is deprecated for
             // 'importance' which is set in the NotificationChannel. The integers representing
             // 'priority' are different from 'importance', so make sure you don't mix them.
-            .setPriority(InboxStyleMockData.mPriority) // Sets lock-screen visibility for 25 and below. For 26 and above, lock screen
+            .setPriority(Content.mPriority) // Sets lock-screen visibility for 25 and below. For 26 and above, lock screen
             // visibility is set in the NotificationChannel.
-            .setVisibility(InboxStyleMockData.mChannelLockscreenVisibility)
+            .setVisibility(Content.mChannelLockscreenVisibility)
 
         // If the phone is in "Do not disturb mode, the user will still be notified if
         // the sender(s) is starred as a favorite.
-        for (name in InboxStyleMockData.mParticipants()) {
+        for (name in Content.mParticipants()) {
             notificationCompatBuilder.addPerson(name)
         }
         val notification = notificationCompatBuilder.build()

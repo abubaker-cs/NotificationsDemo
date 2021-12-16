@@ -1,10 +1,10 @@
-package com.example.notificationsdemo
+package com.example.notificationsdemo.data
 
 import android.app.NotificationManager
 import androidx.core.app.NotificationCompat
 
 // "Sample Data" which can be used to display an Inbox Style Notification.
-object InboxStyleMockData {
+object Content {
 
     /**
      * Title/Content
