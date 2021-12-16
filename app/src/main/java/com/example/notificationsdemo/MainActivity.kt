@@ -1,6 +1,5 @@
 package com.example.notificationsdemo
 
-import android.app.Notification
 import android.app.PendingIntent
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -66,7 +65,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // 1. Create/Retrieve Notification Channel for O and beyond devices (26+).
         val notificationChannelId: String =
-            NotificationUtil().createInboxStyleNotificationChannel(this)
+            com.example.notificationsdemo.utils.Notification()
+                .createInboxStyleNotificationChannel(this)
 
         // 2. Build the INBOX_STYLE.
         val inboxStyle =
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // If the phone is in "Do not disturb mode, the user will still be notified if
         // the sender(s) is starred as a favorite.
-        for (name in Content.mParticipants()) {
+        for (name in Content.mEmailSenders()) {
             notificationCompatBuilder.addPerson(name)
         }
         val notification = notificationCompatBuilder.build()

@@ -40,9 +40,9 @@ object Content {
     }
 
     /**
-     * Email Senders
+     * What if the user has enabled "Do not Disturb" mode?
      */
-    fun mParticipants(): ArrayList<String> {
+    fun mEmailSenders(): ArrayList<String> {
         // If the phone is in "Do not disturb mode, the user will still be notified if
         // the user(s) is starred as a favorite.
         val list = ArrayList<String>()
@@ -59,6 +59,8 @@ object Content {
     /**
      * API v26+ - Notification Channel Values
      */
+
+    // Channel ID
     const val mChannelId = "channel_email_1"
 
     // The user-visible name of the channel.
@@ -66,7 +68,19 @@ object Content {
 
     // The user-visible description of the channel.
     const val mChannelDescription = "Sample Email Notifications"
+
+    // Levels:
+    // 1. Minimum level
+    // 2. Low Level
+    // 3. Default level
     const val mChannelImportance = NotificationManager.IMPORTANCE_DEFAULT
+
+    // Vibrate Device
     const val mChannelEnableVibrate = true
+
+    // Notification Visibility Level?
+    // 1. Public
+    // 2. Private
+    // 3. Secrete
     const val mChannelLockscreenVisibility = NotificationCompat.VISIBILITY_PRIVATE
 }

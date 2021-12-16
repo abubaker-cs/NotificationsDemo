@@ -1,4 +1,4 @@
-package com.example.notificationsdemo
+package com.example.notificationsdemo.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,7 +7,7 @@ import android.os.Build
 import com.example.notificationsdemo.data.Content
 
 // Create a class as Notification Util also create a function to create notification channel.
-class NotificationUtil {
+class Notification {
 
     fun createInboxStyleNotificationChannel(context: Context): String {
 
