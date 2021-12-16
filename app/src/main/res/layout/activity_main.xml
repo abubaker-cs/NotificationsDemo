@@ -29,4 +29,19 @@
         android:layout_height="wrap_content"
         android:text="Launch Inbox Style Notification!" />
 
+    <!-- Add the Button and TextView to launch the Big Image Style notification.-->
+    <TextView
+        android:id="@+id/tv_big_image_style_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="Demos social type app using BIG_PICTURE_STYLE" />
+
+    <Button
+        android:id="@+id/btn_big_image_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Launch Big Image Style Notification!" />
+
 </LinearLayout>
