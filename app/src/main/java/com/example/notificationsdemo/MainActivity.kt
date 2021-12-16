@@ -107,28 +107,41 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-        // 4. Build and issue the notification.
+        /**
+         * 4. Build and issue the Notification.
+         */
+
         // Because we want this to be a new notification (not updating a previous notification), we
         // create a new Builder. However, we don't need to update this notification later, so we
         // will not need to set a global builder for access to the notification later.
         val notificationCompatBuilder = NotificationCompat.Builder(
+
+            // Get the Active Context
             applicationContext,
+
+            // Defined in the Step #1
             notificationChannelId
         )
 
+
+        /**
+         * Configuration: Setting all properties of the Notification Builder
+         */
         notificationCompatBuilder
 
-            // INBOX_STYLE sets title and content for API 16+ (4.1 and after) when the notification is expanded.
+            // Expanded State: Title + Content for API 16+ (> v4.1)
             .setStyle(inboxStyle)
 
-            // Title for API <16 (4.0 and below) devices and API 16+ (4.1 and after) when the notification is collapsed.
+            // Collapsed State: Title for API <16 (4.0 and below)
             .setContentTitle(Content.mContentTitle)
 
-            // Content for API <24 (7.0 and below) devices and API 16+ (4.1 and after) when the notification is collapsed.
+            // Collapsed State: Content for API <24 (7.0 and below) devices and API 16+ (4.1 and after)
             .setContentText(Content.mContentText)
 
+            // Icon: Small
             .setSmallIcon(R.drawable.ic_stat_notification)
 
+            // Icon: Large
             .setLargeIcon(
                 BitmapFactory.decodeResource(
                     resources,
@@ -136,8 +149,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 )
             )
 
+            // Gets a PendingIntent containing the intent.
             .setContentIntent(mainPendingIntent)
 
+            //
             .setDefaults(NotificationCompat.DEFAULT_ALL)
 
             // Set primary color (important for Wear 2.0 Notifications).
