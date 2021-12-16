@@ -6,17 +6,25 @@ import androidx.core.app.NotificationCompat
 // "Sample Data" which can be used to display an Inbox Style Notification.
 object InboxStyleMockData {
 
-    // Standard Notification values:
-    // Title/Content for API <16 (4.0 and below) devices.
+    /**
+     * Title/Content
+     * API < v16 (4.0 and below)
+     */
     const val mContentTitle = "5 new emails"
     const val mContentText = "from BlenderBros, Wingfox, DesignCourse +2 more"
     const val mNumberOfNewEmails = 5
     const val mPriority = NotificationCompat.PRIORITY_DEFAULT
 
-    // Style notification values:
+    /**
+     * Style notification values
+     * API v16+
+     */
     const val mBigContentTitle = "5 new emails from BlenderBros, Wingfox, DesignCourse +2"
     const val mSummaryText = "New email messages"
 
+    /**
+     * Individual Email Summary
+     */
     fun mIndividualEmailSummary(): ArrayList<String> {
 
         // Add each summary line of the new emails, you can add up to 5.
@@ -31,6 +39,9 @@ object InboxStyleMockData {
         return list
     }
 
+    /**
+     * Email Senders
+     */
     fun mParticipants(): ArrayList<String> {
         // If the phone is in "Do not disturb mode, the user will still be notified if
         // the user(s) is starred as a favorite.
@@ -45,7 +56,9 @@ object InboxStyleMockData {
         return list
     }
 
-    // Notification channel values (for devices targeting 26 and above):
+    /**
+     * API v26+ - Notification Channel Values
+     */
     const val mChannelId = "channel_email_1"
 
     // The user-visible name of the channel.
