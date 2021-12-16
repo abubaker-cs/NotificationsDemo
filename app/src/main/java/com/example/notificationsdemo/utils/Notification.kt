@@ -30,7 +30,7 @@ class Notification {
             // Vibrate Device
             val channelEnableVibrate: Boolean = Content.mChannelEnableVibrate
 
-            // Visibility: Private
+            // Visibility on the Lock Screen: Private
             val channelLockscreenVisibility: Int =
                 Content.mChannelLockscreenVisibility
 
@@ -50,7 +50,7 @@ class Notification {
             // Vibrate Device
             notificationChannel.enableVibration(channelEnableVibrate)
 
-            // Visibility: Private
+            // Visibility on the Lock Screen: Private
             notificationChannel.lockscreenVisibility = channelLockscreenVisibility
 
             // Adds NotificationChannel to system. Attempting to create an existing notification
