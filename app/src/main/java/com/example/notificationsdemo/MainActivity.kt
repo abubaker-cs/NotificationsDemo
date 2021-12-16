@@ -47,13 +47,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     /*
-     * Generates a INBOX_STYLE Notification that supports both phone/tablet and wear. For devices
-     * on API level 16 (4.1.x - Jelly Bean) and after, displays INBOX_STYLE. Otherwise, displays a
-     * basic notification.
+     * Generates a INBOX_STYLE Notification that supports both phone/tablet and wear.
+     *
+     * API < v16  - Basic Notification.
+     * API > v16+ - Inbox style
+     *
      */
     private fun generateInboxStyleNotification() {
 
-        // uild a INBOX_STYLE notification as below:
+        // Build a INBOX_STYLE notification as below:
         // Main steps for building a INBOX_STYLE notification:
         //      0. Get your data
         //      1. Create/Retrieve Notification Channel for O and beyond devices (26+)
