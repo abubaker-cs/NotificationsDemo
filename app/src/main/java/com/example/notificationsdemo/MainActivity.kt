@@ -1,5 +1,7 @@
 package com.example.notificationsdemo
 
+import android.annotation.SuppressLint
+import android.app.Notification
 import android.app.PendingIntent
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
      * API > v16+ - Inbox style
      *
      */
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun generateInboxStyleNotification() {
 
         // Build a INBOX_STYLE notification as below:
@@ -140,6 +143,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         for (name in Content.mEmailSenders()) {
             notificationCompatBuilder.addPerson(name)
         }
+
         val notification = notificationCompatBuilder.build()
 
         // Notify to user using the Notification Id and Notification Builder with Notification Manager.
