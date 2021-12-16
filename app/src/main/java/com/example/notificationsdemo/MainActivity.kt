@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // Gets a PendingIntent containing the intent.
             .setContentIntent(mainPendingIntent)
 
-            //
+            // Apply default values (important for Wear 2.0 Notifications).
             .setDefaults(NotificationCompat.DEFAULT_ALL)
 
             // Set primary color (important for Wear 2.0 Notifications).
@@ -171,7 +171,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // .setGroup(GROUP_KEY_YOUR_NAME_HERE)
 
             // Sets large number at the right-hand side of the notification for API <24 devices.
+            // mNumberOfNewEmails = 5
             .setSubText(Content.mNumberOfNewEmails.toString())
+
+            // CATEGORY_EMAIL = "email" (Notification will be like an email)
             .setCategory(Notification.CATEGORY_EMAIL)
 
             // Sets priority for 25 and below. For 26 and above, 'priority' is deprecated for
@@ -183,14 +186,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // visibility is set in the NotificationChannel.
             .setVisibility(Content.mChannelLockscreenVisibility)
 
+        /**
+         * Fallback Settings (In case if the device is in "Do Not Disturb" mode).
+         */
+
         // If the phone is in "Do not disturb mode, the user will still be notified if the sender(s) is starred as a favorite.
         for (name in Content.mEmailSenders()) {
             notificationCompatBuilder.addPerson(name)
         }
 
+        // We will use it in the next step:
         val notification = notificationCompatBuilder.build()
 
-        // Notify to user using the Notification Id and Notification Builder with Notification Manager.
-        mNotificationManagerCompat.notify(NOTIFICATION_ID, notification)
+        // Using the Notification Builder notify the user with:
+        // 1. Notification ID
+        // 2. Notification Builder
+        mNotificationManagerCompat.notify(
+            NOTIFICATION_ID,
+            notification
+        )
     }
 }
