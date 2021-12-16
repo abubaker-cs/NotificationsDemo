@@ -3,29 +3,30 @@ package com.example.notificationsdemo
 import android.app.NotificationManager
 import androidx.core.app.NotificationCompat
 
-// Create an object and define the static data for Inbox Style that we will use while building notification.
+// "Sample Data" which can be used to display an Inbox Style Notification.
 object InboxStyleMockData {
 
     // Standard Notification values:
     // Title/Content for API <16 (4.0 and below) devices.
     const val mContentTitle = "5 new emails"
-    const val mContentText = "from Jane, Jay, Alex +2 more"
+    const val mContentText = "from BlenderBros, Wingfox, DesignCourse +2 more"
     const val mNumberOfNewEmails = 5
     const val mPriority = NotificationCompat.PRIORITY_DEFAULT
 
     // Style notification values:
-    const val mBigContentTitle = "5 new emails from Jane, Jay, Alex +2"
-    const val mSummaryText = "New emails"
+    const val mBigContentTitle = "5 new emails from BlenderBros, Wingfox, DesignCourse +2"
+    const val mSummaryText = "New email messages"
 
     fun mIndividualEmailSummary(): ArrayList<String> {
+
         // Add each summary line of the new emails, you can add up to 5.
         val list = ArrayList<String>()
 
-        list.add("Jane Faab  -   Launch Party is here...")
-        list.add("Jay Walker -   There's a turtle on the server!")
-        list.add("Alex Chang -   Check this out...")
-        list.add("Jane Johns -   Check in code?")
-        list.add("John Smith -   Movies later....")
+        list.add("Blender Bros  -   Better Portfolio Renders...")
+        list.add("Design Course -   Official course launch is 18 days away")
+        list.add("ArtStation    -   New Sign-in to ArtStation...")
+        list.add("Wingfox       -   2 Blender Bundle Courses for as...")
+        list.add("Bravo Team    -   New Like & Favourite buttons....")
 
         return list
     }
@@ -35,11 +36,11 @@ object InboxStyleMockData {
         // the user(s) is starred as a favorite.
         val list = ArrayList<String>()
 
-        list.add("Jane Faab")
-        list.add("Jay Walker")
-        list.add("Alex Chang")
-        list.add("Jane Johns")
-        list.add("John Smith")
+        list.add("Blender Bros")
+        list.add("Design Course")
+        list.add("ArtStation")
+        list.add("Wingfox")
+        list.add("Bravo Team")
 
         return list
     }
