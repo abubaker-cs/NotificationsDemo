@@ -71,6 +71,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val notificationChannelId: String =
             Notifications().createInboxStyleNotificationChannel(this)
 
+        /**
+         * Prepare inboxStyle Notification
+         */
+
         // 2. Build the INBOX_STYLE.
         val inboxStyle = NotificationCompat.InboxStyle()
 
@@ -87,6 +91,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             inboxStyle.addLine(summary)
 
         }
+
+        /**
+         * We will need to create a "Pending Intent" using first defining the Intent()
+         */
 
         // 3. Set up main Intent for notification that is the Activity that you want to launch when user tap on notification.
         val mainIntent = Intent(this, MainActivity::class.java)
